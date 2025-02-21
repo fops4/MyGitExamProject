@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Scraper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h1>📚 Liste des livres scrappés</h1>
+    
+    <!-- Affichage du tableau des livres -->
+    {{ table_html | safe }}
+
+    <!-- Pagination -->
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page-1) }}">Précédent</a>
+        {% endif %}
+
+        <span>Page {{ page }} sur {{ total_pages }}</span>
+
+        {% if page < total_pages %}
+            <a href="{{ url_for('index', page=page+1) }}">Suivant</a>
+        {% endif %}
+    </div>
+
+    <h2>📊 Visualisations</h2>
+    <div class="charts">
+        <img src="{{ url_for('static', filename='price_distribution.png') }}" alt="Prix des livres">
+        <img src="{{ url_for('static', filename='rating_distribution.png') }}" alt="Répartition des notes">
+        <img src="{{ url_for('static', filename='stock_distribution.png') }}" alt="Stock des livres">
+    </div>
+
+</body>
+</html>
