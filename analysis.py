@@ -45,7 +45,7 @@ class BookAnalysis:
 
         # Livres à moins de 20 £
         df_under_20 = self.df[self.df["price"] < 20]
-        print(f"\n📉 Livres à moins de 20 £ : {len(df_under_20)}")
+        print(f"\n📉 Livres à moins de 20  : {len(df_under_20)}")
         print(df_under_20[["title", "price"]].head())
 
     def save_cleaned_data(self, output_filename="data/books_cleaned.csv"):
